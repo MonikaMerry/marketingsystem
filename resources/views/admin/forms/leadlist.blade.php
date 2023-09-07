@@ -49,6 +49,12 @@
                         <div class="card-body">
                             <h5 class="card-title">Customer's Lists</h5>
 
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="{{url('/createlead')}}">
+                                    <button type="button" class="btn btn-success me-md-3">Create the Lists</button>    
+                                </a> 
+                              </div>
+                              
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>

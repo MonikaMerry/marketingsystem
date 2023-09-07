@@ -30,3 +30,7 @@ Route::middleware([
 Route::get('leadlist',function(){
     return view('admin.forms.leadlist');
 });
+
+Route::get('createlead',function(){
+    return view('admin.forms.createlist');
+});
