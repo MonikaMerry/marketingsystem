@@ -159,10 +159,11 @@
 
                 {{-- click me menu button  --}}
 
-                <p class="p-3 text-primary bw-5">Click the Menu<i class="bi bi-arrow-right"></i> <a href="{{url('/leadlist')}}">
-                        <button type="button" class="btn btn-primary">Menu</button></a> <br><br><span
-                        class="text-secondary">to create a list of leads.....</span> </p>
-                <p></p>
+                <p class="p-3 text-primary bw-5">Click the Menu<i class="bi bi-arrow-right"></i> <a
+                        href="{{ url('/lead-list') }}">
+                        <button type="button" class="btn btn-primary">Lead</button></a> <br><br><span
+                        class="text-secondary">to create a list of leads.....</span>
+                </p>
 
             </div>
         </section>

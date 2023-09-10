@@ -11,7 +11,7 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{url('/leadlist')}}">
+            <a class="nav-link collapsed" href="{{url('/lead-list')}}">
                 <i class="bi bi-journal-text"></i>
                 <span>Leads</span>
             </a>
@@ -21,9 +21,9 @@
                 @csrf
                 <a href="{{ route('logout') }}" class="nav-link collapsed"
                     onclick="event.preventDefault();
-       this.closest('form').submit();"> <i
-                        class="bi bi-box-arrow-in-right"></i>
+                        this.closest('form').submit();"> <i class="bi bi-box-arrow-in-right"></i>
                     <span>Logout</span>
+                </a>            
             </form>
         </li>
     </ul>

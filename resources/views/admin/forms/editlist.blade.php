@@ -5,10 +5,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <title>Dashboard - Lead Management</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    @include('admin.layouts.link')
     <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: May 30 2023 with Bootstrap v5.3.0
@@ -16,9 +17,6 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-
-    @include('admin.layouts.link')
-
 </head>
 
 <body>
@@ -51,7 +49,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h3 class=" card-title">Create Lead List </h2>
+                        <h3 class=" card-title">Edit Lead List </h2>
 
                             {{-- required alert --}}
                             @if ($errors->any())
@@ -67,33 +65,34 @@
 
                             {{-- alert message --}}
 
-
+                            @if (Session::has('success'))
+                                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                                    {{ Session::get('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
 
                             <!-- General Form Elements -->
-                            <form action="{{ url('create-lead') }}" method="POST">
+                            <form action="{{ url('update-lead') }}" method="POST">
                                 @csrf
+
+                                <input type="hidden" name="id" value="{{ $edit_lead->id }}">
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="name"
-                                            value="{{ old('name') }}">
+                                            value="{{ $edit_lead->name }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputEmail" class="col-sm-2 col-form-label">Phone Number</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" name="phone_number"
-                                            value="{{ old('phone_number') }}">
+                                            value="{{ $edit_lead->mobile_number }}">
                                     </div>
                                 </div>
 
-                                {{-- <div class="row mb-3">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Textarea</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control" ></textarea>
-                    </div>
-                  </div>
-                 --}}
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Districts</label>
                                     <div class="col-sm-10">
@@ -116,7 +115,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Submit Button</label>
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Submit Lead</button>
+                                        <button type="submit" class="btn btn-primary">update Lead</button>
                                     </div>
                                 </div>
 

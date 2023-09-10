@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('lead_comments', function (Blueprint $table) {
             $table->id();
             $table->string('comment');
-            $table->bigInteger('leads_id')->unsigned();
-            $table->bigInteger('users_id')->unsigned();
-           
+            $table->bigInteger('lead_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('active_time');
 
-            $table->foreign('leads_id')->references('id')->on('leads')->onDelete('cascade');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('lead_id')->references('id')->on('leads')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

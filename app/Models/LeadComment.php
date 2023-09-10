@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class LeadComment extends Model
 {
     use HasFactory;
+
+    public function lead()
+    {
+        return $this->belongsTo(Lead::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
