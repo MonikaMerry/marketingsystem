@@ -22,7 +22,7 @@ class CommentController extends Controller
 
     public function createComment(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'comment' => ['required'],
         ]);
@@ -33,16 +33,16 @@ class CommentController extends Controller
         $create_comment->user_id = Auth::user()->id;
 
         $create_comment->save();
-       
-       
+
+
 
         $lead_id =  $request->lead_id;
-        Lead::where('id',$lead_id)->update(['last_contact_time'=>Carbon::now()->addSecond()->diffForHumans()]);
+        Lead::where('id', $lead_id)->update(['last_contact_time' => Carbon::now()->addSecond()->diffForHumans()]);
 
         $status = $request->status;
 
-        Lead::where('id',$lead_id)->update(['status'=> $status]);
-       
+        Lead::where('id', $lead_id)->update(['status' => $status]);
+
         return back()->with('success', 'comment created sucessfully');
         // return $create_comment;
 

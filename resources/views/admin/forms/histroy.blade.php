@@ -99,7 +99,7 @@
                                         <th scope="col">District</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Last Contact Time</th>
-                                        
+
 
                                     </tr>
                                 </thead>
@@ -111,7 +111,7 @@
                                             <td>{{ $item->mobile_number }}</td>
                                             <td>{{ $item->district }}</td>
                                             <td>{{ $item->status }}</td>
-                                            <td>{{$item->last_contact_time}}</td>
+                                            <td>{{ $item->last_contact_time }}</td>
                                             {{-- <td>
                                                 <a href="{{ url('comment-page') }}/{{ $item->id }}"
                                                     class="btn btn-primary">

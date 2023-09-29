@@ -14,7 +14,7 @@ class LeadController extends Controller
 
     public function leadLists()
     {
-        $list_data = Lead::where('status','pending')->get();
+        $list_data = Lead::where('status', 'pending')->get();
         return view('admin.forms.leadlist', compact('list_data'));
     }
 
@@ -27,13 +27,13 @@ class LeadController extends Controller
 
     // create lead
 
-    public function createLead(Request $request )
+    public function createLead(Request $request)
     {
 
         $validatedData = $request->validate([
-            'name' => ['required','max:100'],
-            'phone_number' => ['required','unique:leads,mobile_number','digits:10'],
-            'district' => ['required','max:15'],
+            'name' => ['required', 'max:100'],
+            'phone_number' => ['required', 'unique:leads,mobile_number', 'digits:10'],
+            'district' => ['required', 'max:15'],
         ]);
 
         $create_data = new Lead;
@@ -42,10 +42,10 @@ class LeadController extends Controller
         $create_data->district = $request->district;
         $create_data->save();
 
-        
 
 
-    
+
+
 
         return redirect('lead-list')->with('success', 'Lead created successfully');
     }
@@ -66,9 +66,9 @@ class LeadController extends Controller
     public function updateLead(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => ['required','max:100'],
-            'phone_number' => ['required','digits:10'],
-            'district' => ['required','max:15'],
+            'name' => ['required', 'max:100'],
+            'phone_number' => ['required', 'digits:10'],
+            'district' => ['required', 'max:15'],
         ]);
 
         $update_lead = Lead::find($request->id);
@@ -92,8 +92,9 @@ class LeadController extends Controller
 
     // histroy section
 
-    public function histroyPage(){
-        $histroy_data = Lead::where('status','activated')->get();
+    public function histroyPage()
+    {
+        $histroy_data = Lead::where('status', 'activated')->get();
         return view('admin.forms.histroy', compact('histroy_data'));
     }
 }

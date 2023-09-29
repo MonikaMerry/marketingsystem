@@ -85,7 +85,7 @@
                                 <div class="row mb-3">
                                     <label for="inputPassword" class="col-sm-2 col-form-label">Select Status :</label>
                                     <div class="col-sm-10">
-                                        <select  class="form-select" name="status">
+                                        <select class="form-select" name="status">
                                             <option selected>select status</option>
                                             <option>Activated</option>
                                             <option>Invalid_number</option>
@@ -132,7 +132,7 @@
                                             <td>{{ $key + 1 }}</td>
 
                                             <td>{{ $items->comment }}</td>
-                                            <td>{{Auth::user()->name }}</td>
+                                            <td>{{ Auth::user()->name }}</td>
 
                                         </tr>
                                     @endforeach
