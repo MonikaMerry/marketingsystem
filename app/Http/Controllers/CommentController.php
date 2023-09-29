@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lead;
 use App\Models\LeadComment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -21,6 +22,7 @@ class CommentController extends Controller
 
     public function createComment(Request $request)
     {
+        
         $validatedData = $request->validate([
             'comment' => ['required'],
         ]);
@@ -29,11 +31,21 @@ class CommentController extends Controller
         $create_comment->comment = $request->comment;
         $create_comment->lead_id = $request->lead_id;
         $create_comment->user_id = Auth::user()->id;
-        $create_comment->active_time = now()->toDateTimeString();
-        $create_comment->save();
 
+        $create_comment->save();
+       
+       
+
+        $lead_id =  $request->lead_id;
+        Lead::where('id',$lead_id)->update(['last_contact_time'=>Carbon::now()->addSecond()->diffForHumans()]);
+
+        $status = $request->status;
+
+        Lead::where('id',$lead_id)->update(['status'=> $status]);
+       
         return back()->with('success', 'comment created sucessfully');
         // return $create_comment;
+
     }
 
     // go back to lead list page

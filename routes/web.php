@@ -57,4 +57,7 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::post('create-comment', [CommentController::class, 'createComment']);
     // go back user
     Route::get('go-back', [CommentController::class, 'goBacktoLeadList']);
+
+    // histroy section
+    Route::get('histroy-page',[LeadController::class,'histroyPage']);
 });

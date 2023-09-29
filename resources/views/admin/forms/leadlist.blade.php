@@ -80,7 +80,10 @@
 
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <a href="{{ url('/create-page') }}">
-                                    <button type="button" class="btn btn-success me-md-3">Create the Lists</button>
+                                    <button type="button" class="btn btn-success me-md-3">Create lead</button>
+                                </a>
+                                <a href="{{ url('/histroy-page') }}">
+                                    <button type="button" class="btn btn-secondary me-md-3">History</button>
                                 </a>
                             </div>
 
@@ -92,12 +95,10 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Phone Number</th>
                                         <th scope="col">District</th>
-                                        <th scope="col">Comments</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Active Date</th>
-                                        {{-- <th scope="col">Status Change</th> --}}
-                                        <th scope="col">Edit</th>
-                                        <th scope="col">Delete</th>
+                                        <th scope="col">Last Contact Time</th>
+                                        <th scope="col">Action</th>
+                                        
 
                                     </tr>
                                 </thead>
@@ -108,28 +109,16 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->mobile_number }}</td>
                                             <td>{{ $item->district }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            <td>{{$item->last_contact_time}}</td>
                                             <td>
                                                 <a href="{{ url('comment-page') }}/{{ $item->id }}"
                                                     class="btn btn-primary">
                                                     <i class="bi bi-chat-dots-fill"></i>
                                                 </a>
-                                            </td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>2402-4-25</td>
-                                            {{-- <td>
-                                            <a href="{{url('interest-status')}}/{{$item->id}}"
-                                                class="btn btn-info">Interested
-                                              </a>
-                                              {{-- <a href="{{url('not-interested-status')}}/{{$item->id}}"
-                                                class="btn btn-danger">Not Interested
-                                            </a> 
-                                        </td> --}}
-                                            <td>
                                                 <a href="{{ url('edit-lead') }}/{{ $item->id }}"
                                                     class="btn btn-warning">Edit
                                                 </a>
-                                            </td>
-                                            <td>
                                                 <a href="{{ url('delete-lead') }}/{{ $item->id }}"
                                                     class="btn btn-danger">Delete
                                                 </a>

@@ -96,8 +96,8 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Districts</label>
                                     <div class="col-sm-10">
-                                        <select class="form-select" aria-label="Default select example" name="district">
-                                            <option selected>Open this select menu</option>
+                                        <select class="form-select" aria-label="Default select example" name="district" >
+                                            <option>{{$edit_lead->district}}</option>
                                             <option>Salem</option>
                                             <option>Erode</option>
                                             <option>Coimbatore</option>

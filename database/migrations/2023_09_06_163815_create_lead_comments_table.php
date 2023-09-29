@@ -16,8 +16,7 @@ return new class extends Migration
             $table->string('comment');
             $table->bigInteger('lead_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->string('active_time');
-
+            
             $table->foreign('lead_id')->references('id')->on('leads')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

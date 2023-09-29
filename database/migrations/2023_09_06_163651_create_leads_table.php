@@ -16,8 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('mobile_number');
             $table->string('district')->nullable();
-            $table->string('status')->default('pending');
+            $table->enum('status',['pending','activated','interested','non_interested','contacted','invalid_number'])->default('pending');
             $table->string('active_date_time')->nullable();
+            $table->string('source_type')->nullable();
+            $table->string('source_value')->nullable();
+            $table->string('last_contact_time')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

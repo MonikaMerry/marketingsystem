@@ -32,10 +32,10 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Comment's List</h1>
+            <h1>Histroy List</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url('lead-list') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/lead-list') }}">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </nav>
@@ -47,7 +47,12 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Create Comment</h5>
+                            <h5 class="card-title">Histroy Lists</h5>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="{{ url('/lead-list') }}">
+                                    <button type="button" class="btn btn-secondary me-md-3">Go Back</button>
+                                </a>
+                            </div>
 
                             {{-- delete lead --}}
                             @if (Session::has('danger'))
@@ -77,63 +82,48 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
-                            {{-- create comment --}}
 
-                            <!-- General Form Elements -->
-                            <form action="{{ url('create-comment') }}" method="POST">
-                                @csrf
-                                <div class="row mb-3">
-                                    <label for="inputPassword" class="col-sm-2 col-form-label">Select Status :</label>
-                                    <div class="col-sm-10">
-                                        <select  class="form-select" name="status">
-                                            <option selected>select status</option>
-                                            <option>Activated</option>
-                                            <option>Invalid_number</option>
-                                            <option>Not_intrested</option>
-                                            <option>Intrested</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputPassword" class="col-sm-2 col-form-label">Comment :</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" name="comment"></textarea>
-                                    </div>
-                                </div>
-
-
-                                <input type="hidden" value="{{ $lead_id }}" name="lead_id">
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label"></label>
-                                    <div class="col-sm-10">
-                                        {{-- <a href="{{ url('/') }}"> --}}
-                                        <button type="submit" class="btn btn-success me-md-3">Add comment</button>
-                                        {{-- </a> --}}
-                                        <a href="{{ url('go-back') }}" class="btn btn-secondary me-md-3">
-                                            go back
-                                        </a>
-                                    </div>
-
-                                </div>
-
-                            </form><!-- End General Form Elements -->
+                            {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="{{ url('/create-page') }}">
+                                    <button type="button" class="btn btn-secondary me-md-3">History</button>
+                                </a>
+                            </div> --}}
 
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
-                                    <th scope="col">S.No</th>
-                                    <th scope="col">comment</th>
-                                    <th scope="col">Commented by</th>
+                                    <tr>
+                                        <th scope="col">S.No</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Phone Number</th>
+                                        <th scope="col">District</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Last Contact Time</th>
+                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($comment_list as $key => $items)
+                                    @foreach ($histroy_data as $key => $item)
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
-
-                                            <td>{{ $items->comment }}</td>
-                                            <td>{{Auth::user()->name }}</td>
-
+                                            <td scope="row">{{ $key + 1 }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->mobile_number }}</td>
+                                            <td>{{ $item->district }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            <td>{{$item->last_contact_time}}</td>
+                                            {{-- <td>
+                                                <a href="{{ url('comment-page') }}/{{ $item->id }}"
+                                                    class="btn btn-primary">
+                                                    <i class="bi bi-chat-dots-fill"></i>
+                                                </a>
+                                                <a href="{{ url('edit-lead') }}/{{ $item->id }}"
+                                                    class="btn btn-warning">Edit
+                                                </a>
+                                                <a href="{{ url('delete-lead') }}/{{ $item->id }}"
+                                                    class="btn btn-danger">Delete
+                                                </a>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
