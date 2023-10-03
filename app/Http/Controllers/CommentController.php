@@ -41,7 +41,9 @@ class CommentController extends Controller
 
         $status = $request->status;
 
+
         Lead::where('id', $lead_id)->update(['status' => $status]);
+
 
         return back()->with('success', 'comment created sucessfully');
         // return $create_comment;

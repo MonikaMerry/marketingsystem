@@ -95,6 +95,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Phone Number</th>
                                         <th scope="col">District</th>
+                                        <th scope="col">Language</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Last Contact Time</th>
                                         <th scope="col">Action</th>
@@ -109,7 +110,8 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->mobile_number }}</td>
                                             <td>{{ $item->district }}</td>
-                                            <td>{{ $item->status }}</td>
+                                            <td>{{ $item->language }}</td>
+                                            <td>{{ $item->status}}</td>
                                             <td>{{ $item->last_contact_time }}</td>
                                             <td>
                                                 <a href="{{ url('comment-page') }}/{{ $item->id }}"

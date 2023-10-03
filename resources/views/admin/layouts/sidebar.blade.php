@@ -17,6 +17,18 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link collapsed" href="{{url('/user-list')}}">
+                <i class="bi bi-person-circle"></i>
+                <span>Users</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{url('/message-list')}}">
+                <i class="bi bi-send-fill"></i>
+                <span>Messages</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <a href="{{ route('logout') }}" class="nav-link collapsed"

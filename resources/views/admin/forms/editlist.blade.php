@@ -113,6 +113,21 @@
                                 </div>
 
                                 <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Languages</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" aria-label="Default select example" name="language">
+                                            <option>{{$edit_lead->language}}</option>
+                                            <option>Tamil</option>
+                                            <option>English</option>
+                                            <option>Malayalam</option>
+                                            <option>Hindi</option>
+                                            <option>Telungu</option>
+                                            <option>kanadam</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Submit Button</label>
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">update Lead</button>

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\UserController;
 use App\Models\Lead;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -60,4 +62,17 @@ Route::middleware('auth', 'admin')->group(function () {
 
     // histroy section
     Route::get('histroy-page',[LeadController::class,'histroyPage']);
+
+    // user page
+    Route::get('user-list',[UserController::class,'userListPage']);
+    
+    // active && inactive user
+
+    Route::get('active-user/{id}',[UserController::class,'activeUser']);
+    Route::get('inactive-user/{id}',[UserController::class,'inactiveUser']);
+
+    // message list
+    Route::get('message-list',[MessagesController::class,'messageList']);
+
+
 });

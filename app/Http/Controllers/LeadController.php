@@ -14,7 +14,7 @@ class LeadController extends Controller
 
     public function leadLists()
     {
-        $list_data = Lead::where('status', 'pending')->get();
+        $list_data = Lead::where('status','!=','activated')->get();
         return view('admin.forms.leadlist', compact('list_data'));
     }
 
@@ -40,6 +40,7 @@ class LeadController extends Controller
         $create_data->name = $request->name;
         $create_data->mobile_number = $request->phone_number;
         $create_data->district = $request->district;
+        $create_data->language = $request->language;
         $create_data->save();
 
 
@@ -94,7 +95,7 @@ class LeadController extends Controller
 
     public function histroyPage()
     {
-        $histroy_data = Lead::where('status', 'activated')->get();
+        $histroy_data = Lead::where('status','activated')->get();
         return view('admin.forms.histroy', compact('histroy_data'));
     }
 }
