@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\LeadsImport;
 use App\Models\Lead;
 use App\Models\LeadComment;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class LeadController extends Controller
@@ -98,4 +100,21 @@ class LeadController extends Controller
         $histroy_data = Lead::where('status','activated')->get();
         return view('admin.forms.histroy', compact('histroy_data'));
     }
+
+    // import view page
+
+    public function viewImportPage(){
+        return view('admin.forms.importlead');
+
+    }
+    // import data function
+    public function importData(Request $request){
+
+     Excel::import(new LeadsImport,$request->file('file'));
+
+     return redirect('lead-list')->with('info','Import Data Successfully');
+     
+    
+    }
+
 }

@@ -11,6 +11,8 @@ class Lead extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = ['mobile_number'];
+
     public function comment()
     {
         return $this->hasMany(LeadComment::class, 'lead_id', 'id');

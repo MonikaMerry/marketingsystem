@@ -73,6 +73,12 @@ Route::middleware('auth', 'admin')->group(function () {
 
     // message list
     Route::get('message-list',[MessagesController::class,'messageList']);
+    
+    // import section
+    Route::get('import-page',[LeadController::class,'viewImportPage']);
+
+    Route::post('import-lead-data',[LeadController::class,'importData'])->name('import-data');
+
 
 
 });

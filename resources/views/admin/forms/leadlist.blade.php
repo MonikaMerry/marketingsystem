@@ -85,6 +85,9 @@
                                 <a href="{{ url('/histroy-page') }}">
                                     <button type="button" class="btn btn-secondary me-md-3">History</button>
                                 </a>
+                                <a href="{{ url('/import-page') }}">
+                                    <button type="button" class="btn btn-info me-md-3">Import</button>
+                                </a>
                             </div>
 
                             <!-- Table with stripped rows -->
