@@ -88,6 +88,9 @@
                                 <a href="{{ url('/import-page') }}">
                                     <button type="button" class="btn btn-info me-md-3">Import</button>
                                 </a>
+                                <a href="{{ url('/duplicate-page') }}">
+                                    <button type="button" class="btn btn-warning me-md-3">Duplicate Romove</button>
+                                </a>
                             </div>
 
                             <!-- Table with stripped rows -->

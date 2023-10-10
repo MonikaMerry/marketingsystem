@@ -8,6 +8,7 @@ use App\Models\LeadComment;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LeadController extends Controller
 {
@@ -17,14 +18,14 @@ class LeadController extends Controller
     public function leadLists()
     {
         $list_data = Lead::where('status','!=','activated')->get();
-        return view('admin.forms.leadlist', compact('list_data'));
+        return view('admin.forms.lead.leadlist', compact('list_data'));
     }
 
     // view lead page
 
     public function createPage()
     {
-        return view('admin.forms.createlist');
+        return view('admin.forms.lead.createlist');
     }
 
     // create lead
@@ -59,7 +60,7 @@ class LeadController extends Controller
     {
         $edit_lead = Lead::find($id);
         // $edit_lead = 
-        return view('admin.forms.editlist', compact('edit_lead'));
+        return view('admin.forms.lead.editlist', compact('edit_lead'));
 
         // return view('admin.forms.editlist');
     }
@@ -98,23 +99,25 @@ class LeadController extends Controller
     public function histroyPage()
     {
         $histroy_data = Lead::where('status','activated')->get();
-        return view('admin.forms.histroy', compact('histroy_data'));
+        return view('admin.forms.lead.histroy', compact('histroy_data'));
     }
 
     // import view page
 
     public function viewImportPage(){
-        return view('admin.forms.importlead');
+        return view('admin.forms.lead.importlead');
 
     }
     // import data function
     public function importData(Request $request){
 
-     Excel::import(new LeadsImport,$request->file('file'));
+      
+
+    Excel::import(new LeadsImport, request()->file('file'));
 
      return redirect('lead-list')->with('info','Import Data Successfully');
      
     
     }
-
+    
 }

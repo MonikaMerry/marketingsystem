@@ -3,11 +3,14 @@
 namespace App\Imports;
 
 use App\Models\Lead;
+use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
-class LeadsImport implements ToModel,WithHeadingRow
+class LeadsImport implements ToModel
 {
+    use Importable;
     /**
     * @param array $row
     *
@@ -15,8 +18,10 @@ class LeadsImport implements ToModel,WithHeadingRow
     */
     public function model(array $row)
     {
+
         return new Lead([
-            'mobile_number' => $row['phone_number'],
+            'mobile_number' => $row[0]
         ]);
     }
+    
 }

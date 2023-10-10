@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DuplicateRemoveController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\UserController;
@@ -79,6 +80,11 @@ Route::middleware('auth', 'admin')->group(function () {
 
     Route::post('import-lead-data',[LeadController::class,'importData'])->name('import-data');
 
+    // check duplicate values
 
+    Route::get('duplicate-page',[DuplicateRemoveController::class,'viewDuplicatePage']);
+
+    Route::post('check-value',[DuplicateRemoveController::class,'checkDuplicateValue']);
+    Route::get('export-data',[DuplicateRemoveController::class,'checkDuplicateValue']);
 
 });
