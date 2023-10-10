@@ -43,9 +43,10 @@ class DuplicateRemoveController extends Controller
     
         //  remove duplicate values
           $remove_dupli_values =array_values(array_diff($unique_data,$mobile_number));
-        return $remove_dupli_values;
+        // return $remove_dupli_values;
+        $filename = 'unique.xlsx';
                
-        // return Excel::download(new UniqueValuesExport($remove_dupli_values),$filename,\Maatwebsite\Excel\Excel::XLSX);       
+         return Excel::download($remove_dupli_values,$filename,\Maatwebsite\Excel\Excel::XLSX);       
        
     }
 
