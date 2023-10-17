@@ -37,7 +37,7 @@ class CommentController extends Controller
 
 
         $lead_id =  $request->lead_id;
-        Lead::where('id', $lead_id)->update(['last_contact_time' => Carbon::now()->addSecond()->diffForHumans()]);
+        Lead::where('id', $lead_id)->update(['last_contact_time' => now()->toDateTimeString()]);
 
         $status = $request->status;
 
