@@ -46,8 +46,7 @@ class CommentController extends Controller
 
 
         return back()->with('success', 'comment created sucessfully');
-        // return $create_comment;
-
+     
     }
 
     // go back to lead list page

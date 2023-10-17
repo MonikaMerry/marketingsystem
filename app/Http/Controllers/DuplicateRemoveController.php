@@ -32,7 +32,7 @@ class DuplicateRemoveController extends Controller
     $file = $request->file('check-data');
 
     $data = Excel::toArray([], $file);
-
+    
     $collect_data = collect($data[0])->flatten(1);
     // collect unique data
     $unique_data = array_unique($collect_data->toArray());
@@ -42,7 +42,7 @@ class DuplicateRemoveController extends Controller
 
     //  remove duplicate values
     $remove_dupli_values = array_chunk(array_values(array_filter(array_diff($unique_data, $mobile_number))), 1);
-    // return $remove_dupli_values;
+   
 
     return Excel::download(new UniqueValuesExport($remove_dupli_values), 'unique_numbers.xlsx');
   }
