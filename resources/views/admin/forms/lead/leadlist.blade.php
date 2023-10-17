@@ -117,8 +117,9 @@
                                             <td>{{ $item->mobile_number }}</td>
                                             <td>{{ $item->district }}</td>
                                             <td>{{ $item->language }}</td>
-                                            <td>{{ $item->status}}</td>
-                                            <td>{{ $item->last_contact_time }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            <td>{{ Carbon\Carbon::parse($item->last_contact_time)->diffForHumans() }}
+                                            </td>
                                             <td>
                                                 <a href="{{ url('comment-page') }}/{{ $item->id }}"
                                                     class="btn btn-primary">
