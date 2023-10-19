@@ -7,23 +7,42 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function userListPage(){
+    public function userListPage()
+    {
         $user_list = User::get();
-        return view('admin.forms.userlist',compact('user_list'));
+        return view('admin.forms.userlist', compact('user_list'));
     }
 
-    public function activeUser($id){
-         $active_user = User::find($id);
-         $active_user->active_user = 1;
-         $active_user->save();
+    public function activeUser($id)
+    {
+        $active_user = User::find($id);
+        $active_user->active_user = 1;
+        $active_user->save();
 
-         return back()->with('info', 'User InActivated Successfully');
+        return back()->with('info', 'User InActivated Successfully');
     }
 
-    public function inactiveUser($id){
+    public function inactiveUser($id)
+    {
         $inactive_user = User::find($id);
         $inactive_user->active_user = 0;
-        $inactive_user->save();       
+        $inactive_user->save();
         return back()->with('info', 'User Activated Successfully');
-   }
+    }
+
+    public function userToAdmin($id)
+    {
+        $mark_as_user = User::find($id);
+        $mark_as_user->is_admin = 1;
+        $mark_as_user->save();
+        return back()->with('info', 'Make as Admin Successfully');
+    }
+
+    public function adminToUser($id)
+    {
+        $mark_as_admin = User::find($id);
+        $mark_as_admin->is_admin = 0;
+        $mark_as_admin->save();
+        return back()->with('info', 'Make as User Successfully');
+    }
 }

@@ -118,29 +118,29 @@
                                 </div>
 
                             </form><!-- End General Form Elements -->
-
-                            <!-- Table with stripped rows -->
-                            <table class="table datatable">
-                                <thead>
-                                    <th scope="col">S.No</th>
-                                    <th scope="col">comment</th>
-                                    <th scope="col">Commented by</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($comment_list as $key => $items)
-                                        <tr>
-                                            <td>{{ $key + 1 }}</td>
-
-                                            <td>{{ $items->comment }}</td>
-                                            <td>{{ Auth::user()->name }}</td>
-
+                            <div style="overflow-x:auto;">
+                                <!-- Table with stripped rows -->
+                                <table class="table datatable">
+                                    <thead>
+                                        <th scope="col">S.No</th>
+                                        <th scope="col">comment</th>
+                                        <th scope="col">Commented by</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <!-- End Table with stripped rows -->
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($comment_list as $key => $items)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
 
+                                                <td>{{ $items->comment }}</td>
+                                                <td>{{ Auth::user()->name }}</td>
+
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <!-- End Table with stripped rows -->
+                            </div>
                         </div>
                     </div>
 

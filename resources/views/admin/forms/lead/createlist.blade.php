@@ -87,13 +87,6 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="row mb-3">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Textarea</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control" ></textarea>
-                    </div>
-                  </div>
-                 --}}
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Districts</label>
                                     <div class="col-sm-10">
@@ -129,9 +122,9 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Submit Button</label>
+                                    <label class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Submit Lead</button>
+                                        <button type="submit" class="btn btn-primary">Create Lead</button>
                                     </div>
                                 </div>
 

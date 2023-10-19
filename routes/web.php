@@ -62,29 +62,33 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::get('go-back', [CommentController::class, 'goBacktoLeadList']);
 
     // histroy section
-    Route::get('histroy-page',[LeadController::class,'histroyPage']);
+    Route::get('histroy-page', [LeadController::class, 'histroyPage']);
 
     // user page
-    Route::get('user-list',[UserController::class,'userListPage']);
-    
+    Route::get('user-list', [UserController::class, 'userListPage']);
+
     // active && inactive user
 
-    Route::get('active-user/{id}',[UserController::class,'activeUser']);
-    Route::get('inactive-user/{id}',[UserController::class,'inactiveUser']);
+    Route::get('active-user/{id}', [UserController::class, 'activeUser']);
+    Route::get('inactive-user/{id}', [UserController::class, 'inactiveUser']);
+
+    // admin to user && user to admin
+
+    Route::get('user-admin/{id}', [UserController::class, 'userToAdmin']);
+    Route::get('admin-user/{id}', [UserController::class, 'adminToUser']);
 
     // message list
-    Route::get('message-list',[MessagesController::class,'messageList']);
-    
-    // import section
-    Route::get('import-page',[LeadController::class,'viewImportPage']);
+    Route::get('message-list', [MessagesController::class, 'messageList']);
 
-    Route::post('import-lead-data',[LeadController::class,'importData'])->name('import-data');
+    // import section
+    Route::get('import-page', [LeadController::class, 'viewImportPage']);
+
+    Route::post('import-lead-data', [LeadController::class, 'importData'])->name('import-data');
 
     // check duplicate values
 
-    Route::get('duplicate-page',[DuplicateRemoveController::class,'viewDuplicatePage']);
+    Route::get('duplicate-page', [DuplicateRemoveController::class, 'viewDuplicatePage']);
 
-    Route::post('check-value',[DuplicateRemoveController::class,'checkDuplicateValue']);
-    Route::get('export-data',[DuplicateRemoveController::class,'checkDuplicateValue']);
-
+    Route::post('check-value', [DuplicateRemoveController::class, 'checkDuplicateValue']);
+    Route::get('export-data', [DuplicateRemoveController::class, 'checkDuplicateValue']);
 });

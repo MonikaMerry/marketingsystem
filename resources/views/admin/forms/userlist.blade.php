@@ -86,49 +86,62 @@
                                     <button type="button" class="btn btn-secondary me-md-3">History</button>
                                 </a>
                             </div> --}}
-
-                            <!-- Table with stripped rows -->
-                            <table class="table datatable">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">S.No</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">email</th>
-                                        <th scope="col">Active/InActive</th>
-                                        <th scope="col">Action</th>
-
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($user_list as $key => $item)
+                            <div style="overflow-x:auto;">
+                                <!-- Table with stripped rows -->
+                                <table class="table datatable">
+                                    <thead>
                                         <tr>
-                                            <td scope="row">{{ $key + 1 }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            @if ($item->active_user == 0)
-                                            <td>
-                                                <a href="{{url('active-user')}}/{{$item->id}}" class="btn btn-primary">Active User</a>
-                                            </td>
-                                            @else
-                                            <td>
-                                                <a href="{{url('inactive-user')}}/{{$item->id}}" class="btn btn-primary">InActive User</a>
-                                            </td>
-                                            @endif
-                                            <td>
-                                                <a href="{{ url('edit-lead') }}/{{ $item->id }}"
-                                                    class="btn btn-warning">Edit
-                                                </a>
-                                                <a href="{{ url('delete-lead') }}/{{ $item->id }}"
-                                                    class="btn btn-danger">Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <!-- End Table with stripped rows -->
+                                            <th scope="col">S.No</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">email</th>
+                                            <th scope="col">Active/InActive</th>
+                                            <th scope="col">Action</th>
 
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($user_list as $key => $item)
+                                            <tr>
+                                                <td scope="row">{{ $key + 1 }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->email }}</td>
+                                                @if ($item->active_user == 0)
+                                                    <td>
+                                                        <a href="{{ url('active-user') }}/{{ $item->id }}"
+                                                            class="btn btn-primary">Active User</a>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <a href="{{ url('inactive-user') }}/{{ $item->id }}"
+                                                            class="btn btn-primary">InActive User</a>
+                                                    </td>
+                                                @endif
+                                                @if ($item->is_admin == 0)
+                                                    <td>
+                                                        <a href="{{ url('user-admin') }}/{{ $item->id }}"
+                                                            class="btn btn-primary">Mark as Admin</a>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <a href="{{ url('admin-user') }}/{{ $item->id }}"
+                                                            class="btn btn-primary">Remove as Admin</a>
+                                                    </td>
+                                                @endif
+                                                <td>
+                                                    <a href="{{ url('edit-lead') }}/{{ $item->id }}"
+                                                        class="btn btn-warning mb-1">Edit
+                                                    </a>
+                                                    <a href="{{ url('delete-lead') }}/{{ $item->id }}"
+                                                        class="btn btn-danger mb-1">Delete
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <!-- End Table with stripped rows -->
+                            </div>
                         </div>
                     </div>
 

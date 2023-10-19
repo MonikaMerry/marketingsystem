@@ -94,50 +94,53 @@
                             </div>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">S.No</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Phone Number</th>
-                                        <th scope="col">District</th>
-                                        <th scope="col">Language</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Last Contact Time</th>
-                                        <th scope="col">Action</th>
+                            <div style="overflow-x:auto;">
+                                <table class="table datatable">
 
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($list_data as $key => $item)
+                                    <thead>
                                         <tr>
-                                            <td scope="row">{{ $key + 1 }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->mobile_number }}</td>
-                                            <td>{{ $item->district }}</td>
-                                            <td>{{ $item->language }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>{{ Carbon\Carbon::parse($item->last_contact_time)->diffForHumans() }}
-                                            </td>
-                                            <td>
-                                                <a href="{{ url('comment-page') }}/{{ $item->id }}"
-                                                    class="btn btn-primary">
-                                                    <i class="bi bi-chat-dots-fill"></i>
-                                                </a>
-                                                <a href="{{ url('edit-lead') }}/{{ $item->id }}"
-                                                    class="btn btn-warning">Edit
-                                                </a>
-                                                <a href="{{ url('delete-lead') }}/{{ $item->id }}"
-                                                    class="btn btn-danger">Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <!-- End Table with stripped rows -->
+                                            <th scope="col">S.No</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Phone Number</th>
+                                            <th scope="col">District</th>
+                                            <th scope="col">Language</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Last Contact Time</th>
+                                            <th scope="col">Action</th>
 
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($list_data as $key => $item)
+                                            <tr>
+                                                <td scope="row">{{ $key + 1 }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->mobile_number }}</td>
+                                                <td>{{ $item->district }}</td>
+                                                <td>{{ $item->language }}</td>
+                                                <td>{{ $item->status }}</td>
+                                                <td>{{ Carbon\Carbon::parse($item->last_contact_time)->diffForHumans() }}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url('comment-page') }}/{{ $item->id }}"
+                                                        class="btn btn-primary mb-1">
+                                                        <i class="bi bi-chat-dots-fill"></i>
+                                                    </a>
+                                                    <a href="{{ url('edit-lead') }}/{{ $item->id }}"
+                                                        class="btn btn-warning mb-1">Edit
+                                                    </a>
+                                                    <a href="{{ url('delete-lead') }}/{{ $item->id }}"
+                                                        class="btn btn-danger mb-1">Delete
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+
+                                </table>
+                                <!-- End Table with stripped rows -->
+                            </div>
                         </div>
                     </div>
 

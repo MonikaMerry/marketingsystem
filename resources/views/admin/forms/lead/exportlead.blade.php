@@ -70,20 +70,21 @@
 
 
                             <!-- General Form Elements -->
-                            <form action="{{url('check-value')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url('check-value') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Import File</label>
                                     <div class="col-sm-10">
-                                        <input type="file" class="form-control" name="check-data" >
+                                        <input type="file" class="form-control" name="check-data">
                                     </div>
                                 </div>
-                               
+
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
                                         {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-                                        <a href="{{url('export-data')}}" role="button"><button type="submit" class="btn btn-info">Export</button></a>
+                                        <a href="{{ url('export-data') }}" role="button"><button type="submit"
+                                                class="btn btn-info">Export</button></a>
                                     </div>
                                 </div>
 
@@ -103,12 +104,7 @@
 
     </main><!-- End #main -->
 
-
-    {{-- <br><br><br><br><br> --}}
-
-    {{-- <!-- ======= Footer ======= -->
-    @include('admin.layouts.footer')
-    <!-- End Footer --> --}}
+    <!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
