@@ -16,6 +16,7 @@
         .front-page {
             margin-left: 20%;
             margin-top: 35px;
+            background-attachment:fixed ;
         }
 
         .front-page h1 {
@@ -23,7 +24,7 @@
             font-family: cursive;
             font-weight: 900;
             font-size: 150px;
-            background-image: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
+            background-image: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100% );
             background-size: auto auto;
             background-clip: border-box;
             background-size: 200% auto;

@@ -32,7 +32,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Leads List</h1>
+            <h1>State List</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Home</a></li>
@@ -47,7 +47,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Lead's Lists</h5>
+                            <h5 class="card-title">State Lists</h5>
 
                             {{-- delete lead --}}
                             @if (Session::has('danger'))
@@ -78,69 +78,34 @@
                                 </div>
                             @endif
 
-                            {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href="{{ url('/create-page') }}">
-                                    <button type="button" class="btn btn-success me-md-3">Create lead</button>
-                                </a>
-                                <a href="{{ url('/histroy-page') }}">
-                                    <button type="button" class="btn btn-secondary me-md-3">History</button>
-                                </a>
-                            </div> --}}
+                            <!-- Table with stripped rows -->
                             <div style="overflow-x:auto;">
-                                <!-- Table with stripped rows -->
                                 <table class="table datatable">
+
                                     <thead>
                                         <tr>
                                             <th scope="col">S.No</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">email</th>
-                                            <th scope="col">Active/InActive</th>
-                                            <th scope="col">Admin Control</th>
-                                            <th scope="col">Updated by</th>
+                                            <th scope="col">State</th>
                                             <th scope="col">Action</th>
+
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($user_list as $key => $item)
-                                            <tr>
-                                                <td scope="row">{{ $key + 1 }}</td>
-                                                <td>{{ $item->name }}</td>
-                                                <td>{{ $item->email }}</td>
-                                                @if ($item->active_user == 0)
-                                                    <td>
-                                                        <a href="{{ url('active-user') }}/{{ $item->id }}"
-                                                            class="btn btn-primary">Active User</a>
-                                                    </td>
-                                                @else
-                                                    <td>
-                                                        <a href="{{ url('inactive-user') }}/{{ $item->id }}"
-                                                            class="btn btn-primary">InActive User</a>
-                                                    </td>
-                                                @endif
-                                                @if ($item->is_admin == 0)
-                                                    <td>
-                                                        <a href="{{ url('user-admin') }}/{{ $item->id }}"
-                                                            class="btn btn-primary">Mark as Admin</a>
-                                                    </td>
-                                                @else
-                                                    <td>
-                                                        <a href="{{ url('admin-user') }}/{{ $item->id }}"
-                                                            class="btn btn-primary">Remove as Admin</a>
-                                                    </td>
-                                                @endif
-                                                <td>{{Auth::user()->name }}</td>
-                                                <td>
-                                                    <a href="{{ url('edit-lead') }}/{{ $item->id }}"
-                                                        class="btn btn-warning mb-1">Edit
-                                                    </a>
-                                                    <a href="{{ url('delete-lead') }}/{{ $item->id }}"
-                                                        class="btn btn-danger mb-1">Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        {{-- @foreach ($list_data as $key => $item) --}}
+                                        <tr>
+                                            <td scope="row"></td>
+                                            <td>TamilNadu</td>
+                                            <td>
+                                                <a href="" class="btn btn-warning mb-1">Edit
+                                                </a>
+                                                <a href="" class="btn btn-danger mb-1">Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {{-- @endforeach --}}
                                     </tbody>
+
                                 </table>
                                 <!-- End Table with stripped rows -->
                             </div>

@@ -17,7 +17,7 @@ class LeadController extends Controller
 
     public function leadLists()
     {
-        $list_data = Lead::where('status','!=','activated')->get();
+        $list_data = Lead::where('status', '!=', 'activated')->get();
         return view('admin.forms.lead.leadlist', compact('list_data'));
     }
 
@@ -98,26 +98,35 @@ class LeadController extends Controller
 
     public function histroyPage()
     {
-        $histroy_data = Lead::where('status','activated')->get();
+        $histroy_data = Lead::where('status', 'activated')->get();
         return view('admin.forms.lead.histroy', compact('histroy_data'));
     }
 
     // import view page
 
-    public function viewImportPage(){
+    public function viewImportPage()
+    {
         return view('admin.forms.lead.importlead');
-
     }
     // import data function
-    public function importData(Request $request){
+    public function importData(Request $request)
+    {
 
-      
 
-    Excel::import(new LeadsImport, request()->file('file'));
 
-     return redirect('lead-list')->with('info','Import Data Successfully');
-     
-    
+        Excel::import(new LeadsImport, request()->file('file'));
+
+        return redirect('lead-list')->with('info', 'Import Data Successfully');
     }
-    
+
+    // district 
+
+    public function districtPage()
+    {
+        return view('admin.forms.lead.district');
+    }
+    public function statePage()
+    {
+        return view('admin.forms.lead.state');
+    }
 }

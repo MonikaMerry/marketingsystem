@@ -29,6 +29,18 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link collapsed" href="{{url('/district-page')}}">
+                <i class="bi bi-send-fill"></i>
+                <span>Districts</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{url('/state-page')}}">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>States</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <a href="{{ route('logout') }}" class="nav-link collapsed"
