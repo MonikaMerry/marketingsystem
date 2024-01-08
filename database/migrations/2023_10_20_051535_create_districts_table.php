@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
+            $table->string('district');
             $table->bigInteger('state_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');

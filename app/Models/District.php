@@ -9,6 +9,9 @@ class District extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['id','district',];
+
+
     public function states(){
         return $this->belongsTo(State::class);
     }

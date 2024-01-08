@@ -73,14 +73,14 @@
                             <form action="{{ url('create-lead') }}" method="POST">
                                 @csrf
                                 <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                                    <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="name"
                                             value="{{ old('name') }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="inputEmail" class="col-sm-2 col-form-label">Phone Number</label>
+                                    <label class="col-sm-2 col-form-label">Phone Number</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" name="phone_number"
                                             value="{{ old('phone_number') }}">
@@ -88,28 +88,32 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Districts</label>
+                                    <label class="col-sm-2 col-form-label">State</label>
                                     <div class="col-sm-10">
-                                        <select class="form-select" aria-label="Default select example" name="district">
-                                            <option selected>Open this select menu</option>
-                                            <option>Salem</option>
-                                            <option>Erode</option>
-                                            <option>Coimbatore</option>
-                                            <option>Chennai</option>
-                                            <option>Ootty</option>
-                                            <option>Bangalore</option>
-                                            <option>Madurai</option>
-                                            <option>Namakkal</option>
-                                            <option>Dindigul</option>
-                                            <option>Hosur</option>
+                                        <select class="form-select" name="state" id="state">
+                                            <option value="">Open this select menu</option>
+                                            @foreach ($states as $item)
+                                                <option value="{{ $item->id }}">{{ $item->state }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">District</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" name="districts" id="districts">
+                                            <option>Select District</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Languages</label>
                                     <div class="col-sm-10">
-                                        <select class="form-select" aria-label="Default select example" name="language">
+                                        <select class="form-select" name="language">
                                             <option selected>Open this select menu</option>
                                             <option>Tamil</option>
                                             <option>English</option>
@@ -143,6 +147,28 @@
 
 
     </main><!-- End #main -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('#state').change(function() {
+                let sid = jQuery(this).val();
+               jQuery.ajax({
+                     url:'/getDistrict',
+                     type:'post',
+                     data:'sid='+sid+'&_token={{csrf_token()}}',
+                     success:function (result){
+                        jQuery('#districts') .html(result)
+                     }
+               });
+            });
+        });
+    </script>
+
 
 
     {{-- <br><br><br><br><br> --}}

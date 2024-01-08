@@ -92,18 +92,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($list_data as $key => $item) --}}
+                                        @foreach ($states as $key => $state)
                                         <tr>
-                                            <td scope="row"></td>
-                                            <td>TamilNadu</td>
+                                            <td scope="row">{{$key+ 1}}</td>
+                                            <td>{{$state->state}}</td>
                                             <td>
-                                                <a href="" class="btn btn-warning mb-1">Edit
+                                                <a href="{{url('edit-state')}}/{{$state->id}}" class="btn btn-warning mb-1">Edit
                                                 </a>
-                                                <a href="" class="btn btn-danger mb-1">Delete
+                                                <a href="{{url('delete-state')}}/{{$state->id}}" class="btn btn-danger mb-1">Delete
                                                 </a>
                                             </td>
                                         </tr>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </tbody>
 
                                 </table>

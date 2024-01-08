@@ -94,6 +94,15 @@ Route::middleware('auth', 'admin')->group(function () {
 
     // district and state
     Route::get('district-page',[LeadController::class,'districtPage']);
+    Route::get('edit-district/{id}', [LeadController::class, 'editDistrict']);
+    Route::get('delete-district/{id}', [LeadController::class, 'deleteDistrict']);
+
+    
     Route::get('state-page',[LeadController::class,'statePage']);
+    Route::post('/getDistrict',[LeadController::class,'getDistrict']);
+    Route::get('edit-state/{id}', [LeadController::class, 'deleteState']);
+    Route::get('delete-state/{id}', [LeadController::class, 'deleteState']);
+
+
 
 });
