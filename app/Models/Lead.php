@@ -17,8 +17,4 @@ class Lead extends Model
     {
         return $this->hasMany(LeadComment::class, 'lead_id', 'id');
     }
-
-    public function stateNames(){
-        return $this->hasOne(State::class,'id');
-    }
 }

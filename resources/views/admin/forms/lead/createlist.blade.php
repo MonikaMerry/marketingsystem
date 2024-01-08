@@ -32,7 +32,16 @@
     {{-- sidebar ends... --}}
 
     <main id="main" class="main">
+        @if ($errors->any())
+            <div class="alert alert-warning">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
 
+                </ul>
+            </div>
+        @endif
         <div class="pagetitle">
             <h1>Leads List </h1>
             <nav>
@@ -73,14 +82,14 @@
                             <form action="{{ url('create-lead') }}" method="POST">
                                 @csrf
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Name</label>
+                                    <label for="inputText" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="name"
                                             value="{{ old('name') }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Phone Number</label>
+                                    <label for="inputEmail" class="col-sm-2 col-form-label">Phone Number</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" name="phone_number"
                                             value="{{ old('phone_number') }}">
@@ -88,32 +97,28 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">State</label>
+                                    <label class="col-sm-2 col-form-label">Districts</label>
                                     <div class="col-sm-10">
-                                        <select class="form-select" name="state" id="state">
-                                            <option value="">Open this select menu</option>
-                                            @foreach ($states as $item)
-                                                <option value="{{ $item->id }}">{{ $item->state }}</option>
-                                            @endforeach
+                                        <select class="form-select" aria-label="Default select example" name="district">
+                                            <option selected>Open this select menu</option>
+                                            <option>Salem</option>
+                                            <option>Erode</option>
+                                            <option>Coimbatore</option>
+                                            <option>Chennai</option>
+                                            <option>Ootty</option>
+                                            <option>Bangalore</option>
+                                            <option>Madurai</option>
+                                            <option>Namakkal</option>
+                                            <option>Dindigul</option>
+                                            <option>Hosur</option>
                                         </select>
                                     </div>
                                 </div>
-
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">District</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-select" name="districts" id="districts">
-                                            <option>Select District</option>
-                                        </select>
-
-                                    </div>
-                                </div>
-
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Languages</label>
                                     <div class="col-sm-10">
-                                        <select class="form-select" name="language">
+                                        <select class="form-select" aria-label="Default select example" name="language">
                                             <option selected>Open this select menu</option>
                                             <option>Tamil</option>
                                             <option>English</option>
