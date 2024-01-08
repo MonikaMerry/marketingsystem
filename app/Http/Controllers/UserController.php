@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function userListPage()
     {
-        $user_list = User::get();
+        $user_list = User::where('id', '!=', 1)->get();
         return view('admin.forms.userlist', compact('user_list'));
     }
 

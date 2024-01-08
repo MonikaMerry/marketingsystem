@@ -17,4 +17,14 @@ class Lead extends Model
     {
         return $this->hasMany(LeadComment::class, 'lead_id', 'id');
     }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
 }

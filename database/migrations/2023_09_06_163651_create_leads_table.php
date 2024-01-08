@@ -15,13 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('mobile_number');
-            $table->string('district')->nullable();
             $table->string('language')->nullable();
             $table->string('status')->default('pending');
             $table->string('active_date_time')->nullable();
             $table->string('source_type')->nullable();
             $table->string('source_value')->nullable();
             $table->string('last_contact_time')->nullable();
+            $table->bigInteger('district_id')->nullable();
+            $table->bigInteger('state_id')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('states', function (Blueprint $table) {
             $table->id();
             $table->string('state');
+            $table->string('country_id')->default(1);
             $table->timestamps();
         });
     }

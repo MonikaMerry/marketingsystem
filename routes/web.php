@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\DuplicateRemoveController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\StateController;
 use App\Http\Controllers\UserController;
 use App\Models\Lead;
 use Illuminate\Support\Facades\Route;
@@ -93,7 +95,8 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::get('export-data', [DuplicateRemoveController::class, 'checkDuplicateValue']);
 
     // district and state
-    Route::get('district-page',[LeadController::class,'districtPage']);
-    Route::get('state-page',[LeadController::class,'statePage']);
-
+    Route::get('district-page', [LeadController::class, 'districtPage']);
+    Route::get('state-page', [LeadController::class, 'statePage']);
+    Route::resource('state', StateController::class);
+    Route::resource('district', DistrictController::class);
 });

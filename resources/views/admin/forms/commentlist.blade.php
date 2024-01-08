@@ -48,7 +48,15 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Create Comment</h5>
-
+                            @if ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                                        {{ $error }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endforeach
+                            @endif
                             {{-- delete lead --}}
                             @if (Session::has('danger'))
                                 <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
@@ -86,12 +94,12 @@
                                     <label for="inputPassword" class="col-sm-2 col-form-label">Select Status :</label>
                                     <div class="col-sm-10">
                                         <select class="form-select" name="status">
-                                            <option selected>select status</option>
-                                            <option>activated</option>
-                                            <option>invalid_number</option>
-                                            <option>not_intrested</option>
-                                            <option>intrested</option>
-                                            <option>contacted</option>
+                                            <option value="">select status</option>
+                                            <option value="activated">activated</option>
+                                            <option value="invalid_number">invalid_number</option>
+                                            <option value="not_intrested">not_intrested</option>
+                                            <option value="intrested">intrested</option>
+                                            <option value="contacted">contacted</option>
                                         </select>
                                     </div>
                                 </div>

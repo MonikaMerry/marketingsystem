@@ -25,6 +25,7 @@ class CommentController extends Controller
 
         $validatedData = $request->validate([
             'comment' => ['required'],
+            'status' => ['required'],
         ]);
 
         $create_comment = new LeadComment;

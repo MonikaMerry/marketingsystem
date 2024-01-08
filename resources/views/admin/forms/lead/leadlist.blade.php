@@ -102,6 +102,7 @@
                                             <th scope="col">S.No</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Phone Number</th>
+                                            <th scope="col">State</th>
                                             <th scope="col">District</th>
                                             <th scope="col">Language</th>
                                             <th scope="col">Status</th>
@@ -117,10 +118,26 @@
                                                 <td scope="row">{{ $key + 1 }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->mobile_number }}</td>
-                                                <td>{{ $item->district }}</td>
+                                                <td>
+                                                    @if (isset($item->state->state))
+                                                        {{ $item->state->state }}
+                                                    @else
+                                                        not assigned
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if (isset($item->district->district))
+                                                        {{ $item->district->district }}
+                                                    @else
+                                                        not assigned
+                                                    @endif
+                                                </td>
                                                 <td>{{ $item->language }}</td>
                                                 <td>{{ $item->status }}</td>
-                                                <td>{{ Carbon\Carbon::parse($item->last_contact_time)->diffForHumans() }}
+                                                <td>
+                                                    @if ($item->last_contact_time)
+                                                        {{ Carbon\Carbon::parse($item->last_contact_time)->diffForHumans() }}
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     <a href="{{ url('comment-page') }}/{{ $item->id }}"
