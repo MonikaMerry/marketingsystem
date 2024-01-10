@@ -95,7 +95,7 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::get('export-data', [DuplicateRemoveController::class, 'checkDuplicateValue']);
 
     // district and state
-    Route::get('district-page',[LeadController::class,'districtPage']);
-    Route::get('state-page',[LeadController::class,'statePage']);
+    Route::resource('district',DistrictController::class);
+    Route::resource('state',StateController::class);
 
 });

@@ -32,7 +32,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Leads List</h1>
+            <h1>Users List</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Home</a></li>
@@ -47,7 +47,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Lead's Lists</h5>
+                            <h5 class="card-title">Users's Lists</h5>
 
                             {{-- delete lead --}}
                             @if (Session::has('danger'))
@@ -78,14 +78,6 @@
                                 </div>
                             @endif
 
-                            {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href="{{ url('/create-page') }}">
-                                    <button type="button" class="btn btn-success me-md-3">Create lead</button>
-                                </a>
-                                <a href="{{ url('/histroy-page') }}">
-                                    <button type="button" class="btn btn-secondary me-md-3">History</button>
-                                </a>
-                            </div> --}}
                             <div style="overflow-x:auto;">
                                 <!-- Table with stripped rows -->
                                 <table class="table datatable">

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('mobile_number');
-            $table->string('district')->nullable();
             $table->string('language')->nullable();
             $table->string('status')->default('pending');
             $table->string('active_date_time')->nullable();

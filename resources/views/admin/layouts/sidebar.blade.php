@@ -31,13 +31,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ url('/district-page') }}">
+                <a class="nav-link collapsed" href="{{ url('district') }}">
                     <i class="bi bi-send-fill"></i>
                     <span>Districts</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ url('/state-page') }}">
+                <a class="nav-link collapsed" href="{{ url('state') }}">
                     <i class="bi bi-geo-alt-fill"></i>
                     <span>States</span>
                 </a>

@@ -29,10 +29,12 @@ class LeadController extends Controller
 
     public function createPage(Request $request)
     {
-        return view('admin.forms.lead.createlist');
+        $state_names = State::get();
+        $district_names = District::get();
+        return view('admin.forms.lead.createlist', compact('state_names', 'district_names'));
     }
 
-   
+
 
     public function createLead(Request $request)
     {
@@ -40,15 +42,17 @@ class LeadController extends Controller
         $validatedData = $request->validate([
             'name' => ['required', 'max:100'],
             'phone_number' => ['required', 'unique:leads,mobile_number', 'digits:10'],
-            'district' => ['required', 'max:15'],
+            'state_name' => ['required', 'max:15'],
+            'district_name' => ['required', 'max:15'],
         ]);
 
-        $create_data                = new Lead;
-        $create_data->name          = $request->name;
-        $create_data->mobile_number = $request->phone_number;
-        $create_data->district = $request->district;
-        $create_data->language = $request->language;
-        $create_data->save();
+        $create_lead = new Lead;
+        $create_lead->name = $request->name;
+        $create_lead->mobile_number = $request->phone_number;
+        $create_lead->state_id = $request->state_name;
+        $create_lead->district_id = $request->district_name;
+        $create_lead->language = $request->language;
+        $create_lead->save();
 
         return redirect('lead-list')->with('success', 'Lead created successfully');
     }
@@ -58,22 +62,19 @@ class LeadController extends Controller
     public function editLead($id)
     {
         $edit_lead = Lead::find($id);
-        // $edit_lead = 
         $states = State::get();
         $districts = District::get();
         return view('admin.forms.lead.editlist', compact('edit_lead', 'states', 'districts'));
-
-        // return view('admin.forms.editlist');
     }
 
-    public function getDistrict(Request $request){
-        $sid = $request->post('sid'); 
+    public function getDistrict(Request $request)
+    {
+        $sid = $request->post('sid');
 
-        $district = DB::table('districts')->where('state_id',$sid)->get();
-        $html='<option value="">Select District</option>';
+        $district = DB::table('districts')->where('state_id', $sid)->get();
+        $html = '<option value="">Select District</option>';
         foreach ($district as $list) {
-        $html.='<option value="'.$list->id.'">'.$list->district.'</option>';
-          
+            $html .= '<option value="' . $list->id . '">' . $list->district . '</option>';
         }
         echo $html;
     }
@@ -89,7 +90,7 @@ class LeadController extends Controller
         ]);
 
         $update_lead = Lead::find($request->id);
-        $update_lead->name          = $request->name;
+        $update_lead->name = $request->name;
         $update_lead->mobile_number = $request->phone_number;
         $update_lead->district = $request->district;
         $update_lead->save();
@@ -130,18 +131,5 @@ class LeadController extends Controller
         Excel::import(new LeadsImport, request()->file('file'));
 
         return redirect('lead-list')->with('info', 'Import Data Successfully');
-    }
-
-    // district 
-
-    public function districtPage()
-    {
-        $districts = District::get();
-        return view('admin.forms.lead.district',compact('districts'));
-    }
-    public function statePage()
-    {
-        $states = State::get();
-        return view('admin.forms.lead.state',compact('states'));
     }
 }

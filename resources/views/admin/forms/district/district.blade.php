@@ -80,6 +80,13 @@
 
                             <!-- Table with stripped rows -->
                             <div style="overflow-x:auto;">
+
+                                  {{-- create button --}}
+                                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <a href="{{ url('district/create') }}">
+                                          <button type="button" class="btn btn-success me-md-3">Create District</button>
+                                    </a>
+                                </div>
                                 <table class="table datatable">
 
                                     <thead>
@@ -97,8 +104,12 @@
                                             <td scope="row">{{$key + 1}}</td>
                                             <td>{{$district->district}}</td>
                                             <td>
-                                                <a href="{{url('edit-district')}}/{{$district->id}}" class="btn btn-warning mb-1">Edit </a>
-                                                <a href="{{url('delete-district')}}/{{$district->id}}" class="btn btn-danger mb-1">Delete </a>
+                                                <a href="{{url('district')}}/{{$district->id}}" class="btn btn-warning mb-1">Edit </a>
+                                                <form action="{{url('district')}}/{{$district->id}}" method="POST">
+                                                     @method('DELETE')
+                                                     @csrf
+                                                     <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach

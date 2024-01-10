@@ -97,20 +97,28 @@
                                 </div>
 
                                 <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">States</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" aria-label="Default select example"
+                                            name="state_name">
+                                            <option>Select State</option>
+                                            @foreach ($state_names as $state_name)
+                                                <option value="{{ $state_name->id }}">{{ $state_name->state }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Districts</label>
                                     <div class="col-sm-10">
-                                        <select class="form-select" aria-label="Default select example" name="district">
-                                            <option selected>Open this select menu</option>
-                                            <option>Salem</option>
-                                            <option>Erode</option>
-                                            <option>Coimbatore</option>
-                                            <option>Chennai</option>
-                                            <option>Ootty</option>
-                                            <option>Bangalore</option>
-                                            <option>Madurai</option>
-                                            <option>Namakkal</option>
-                                            <option>Dindigul</option>
-                                            <option>Hosur</option>
+                                        <select class="form-select" aria-label="Default select example"
+                                            name="district_name">
+                                            <option>Select District</option>
+                                            @foreach ($district_names as $district_name)
+                                                <option value="{{ $district_name->id }}">{{ $district_name->district }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -152,7 +160,7 @@
 
 
     </main><!-- End #main -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 
@@ -172,7 +180,7 @@
                });
             });
         });
-    </script>
+    </script> --}}
 
 
 

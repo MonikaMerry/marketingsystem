@@ -118,7 +118,8 @@
                                                 <td scope="row">{{ $key + 1 }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->mobile_number }}</td>
-                                                <td>{{ $item->district }}</td>
+                                                <td>{{ $item->state_id }}</td>
+                                                <td>{{ $item->district_id }}</td>
                                                 <td>{{ $item->language }}</td>
                                                 <td>{{ $item->status }}</td>
                                                 <td>{{ Carbon\Carbon::parse($item->last_contact_time)->diffForHumans() }}

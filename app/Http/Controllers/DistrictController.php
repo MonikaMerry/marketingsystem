@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\District;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class DistrictController extends Controller
@@ -12,7 +13,8 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        //
+        $districts = District::get();
+        return view('admin.forms.district.district',compact('districts'));
     }
 
     /**
@@ -20,7 +22,8 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        //
+        $state_list = State::get();
+        return view('admin.forms.district.create-district',compact('state_list'));
     }
 
     /**
@@ -28,7 +31,17 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'district' => ['required'],
+        ]);
+
+
+        $district_data = new District;
+        $district_data->district = $request->district;
+        $district_data->state_id = $request->state_id;
+        $district_data->save();
+
+        return redirect('district')->with('success','District Created Successfully');
     }
 
     /**
@@ -36,7 +49,11 @@ class DistrictController extends Controller
      */
     public function show(District $district)
     {
-        //
+        $state_list = State::get();
+        $edit_district = District::find($district->id);
+        
+        //  return $edit_district;
+        return view('admin.forms.district.edit-district',compact('edit_district','state_list'));
     }
 
     /**
@@ -52,7 +69,17 @@ class DistrictController extends Controller
      */
     public function update(Request $request, District $district)
     {
-        //
+        $validatedData = $request->validate([
+            'district' => ['required'],
+        ]);
+
+
+        $update_district = District::find($district->id);
+        $update_district ->district = $request->district;
+        $update_district->state_id = $request->state_name;
+        $update_district ->save();
+        
+        return redirect('district')->with('success','District Updated Successfully');
     }
 
     /**
