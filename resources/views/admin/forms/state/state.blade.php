@@ -80,11 +80,11 @@
 
                             <!-- Table with stripped rows -->
                             <div style="overflow-x:auto;">
-                                
+
                                 {{-- create button --}}
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <a href="{{ url('state/create') }}">
-                                          <button type="button" class="btn btn-success me-md-3">Create State</button>
+                                        <button type="button" class="btn btn-success me-md-3">Create State</button>
                                     </a>
                                 </div>
 
@@ -101,22 +101,25 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($states as $key => $state)
-                                        <tr>
-                                            <td scope="row">{{$key+ 1}}</td>
-                                            <td>{{$state->state}}</td>
-                                            <td>
-                                                <a href="{{url('state')}}/{{$state->id}}" class="btn btn-warning mb-1">Edit</a>
-                                                <form action="{{url('state')}}/{{ $state->id }}" method="POST">
-                                                    @csrf
-                                                
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-block">Delete</button>
-                                                
-                                                </form>
-                                                {{-- <a href="{{url('delete-state')}}/{{$state->id}}" class="btn btn-danger mb-1">Delete --}}
-                                                </a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td scope="row">{{ $key + 1 }}</td>
+                                                <td>{{ $state->state }}</td>
+                                                <td>
+                                                    <div class=" d-grid gap-2 d-md-flex">
+                                                        <a href="{{ url('state') }}/{{ $state->id }}"
+                                                            class="btn btn-warning mb-1">Edit</a>
+                                                        <form action="{{ url('state') }}/{{ $state->id }}"
+                                                            method="POST">
+                                                            @csrf
+
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="btn btn-danger btn-block">Delete</button>
+                                                    </div>
+                                                    </form>
+
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
 
