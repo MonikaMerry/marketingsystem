@@ -47,7 +47,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Users's Lists</h5>
+                            <h5 class="card-title">User's Lists</h5>
 
                             {{-- delete lead --}}
                             @if (Session::has('danger'))
