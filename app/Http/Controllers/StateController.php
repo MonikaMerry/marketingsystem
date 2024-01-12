@@ -13,7 +13,7 @@ class StateController extends Controller
     public function index()
     {
         $states = State::get();
-        return view('admin.forms.state.state',compact('states'));
+        return view('admin.forms.state.state', compact('states'));
     }
 
     /**
@@ -30,7 +30,7 @@ class StateController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'state' => ['required'],
+            'state' => ['required', 'unique:states,state'],
         ]);
 
 
@@ -38,7 +38,7 @@ class StateController extends Controller
         $state_data->state = $request->state;
         $state_data->save();
 
-        return redirect('state')->with('success','State Created Successfully');
+        return redirect('state')->with('success', 'State Created Successfully');
     }
 
     /**
@@ -47,7 +47,7 @@ class StateController extends Controller
     public function show(State $state)
     {
         $edit_state = State::find($state->id);
-        return view('admin.forms.state.edit-state',compact('edit_state'));
+        return view('admin.forms.state.edit-state', compact('edit_state'));
     }
 
     /**
@@ -55,7 +55,6 @@ class StateController extends Controller
      */
     public function edit(State $state)
     {
-       
     }
 
     /**
@@ -64,16 +63,15 @@ class StateController extends Controller
     public function update(Request $request, State $state)
     {
         $validatedData = $request->validate([
-            'state' => ['required'],
+            'state' => ['required', 'unique:states,state,' . $state->id],
         ]);
 
 
         $update_state =  State::find($state->id);
-        $update_state ->state = $request->state;
-        $update_state ->save();
-        
-        return redirect('state')->with('success','State Updated Successfully');
+        $update_state->state = $request->state;
+        $update_state->save();
 
+        return redirect('state')->with('success', 'State Updated Successfully');
     }
 
     /**
@@ -83,6 +81,6 @@ class StateController extends Controller
     {
         $delete_state = State::find($state->id);
         $delete_state->delete();
-        return redirect('state')->with('danger','State Deleted Successfully');
+        return redirect('state')->with('danger', 'State Deleted Successfully');
     }
 }
