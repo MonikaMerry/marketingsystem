@@ -9,10 +9,10 @@ class District extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','district',];
+    protected $fillable = ['id','district','state_id'];
 
 
     public function states(){
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(State::class,'state_id');
     }
 }

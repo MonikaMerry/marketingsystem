@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('source_type')->nullable();
             $table->string('source_value')->nullable();
             $table->string('last_contact_time')->nullable();
+            $table->string('last_contact_person')->nullable();
             $table->bigInteger('district_id')->nullable();
             $table->bigInteger('state_id')->nullable();
 

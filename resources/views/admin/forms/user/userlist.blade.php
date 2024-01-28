@@ -121,12 +121,11 @@
                                                             class="btn btn-primary">Remove as Admin</a>
                                                     </td>
                                                 @endif
-                                                <td>{{Auth::user()->name }}</td>
+                                                <td>{{ Auth::user()->name }}</td>
                                                 <td>
-                                                    <a href="{{ url('edit-lead') }}/{{ $item->id }}"
-                                                        class="btn btn-warning mb-1">Edit
+                                                    <a href="#" class="btn btn-warning mb-1">Edit
                                                     </a>
-                                                    <a href="{{ url('delete-lead') }}/{{ $item->id }}"
+                                                    <a href="{{ url('delete-user') }}/{{ $item->id }}"
                                                         class="btn btn-danger mb-1">Delete
                                                     </a>
                                                 </td>

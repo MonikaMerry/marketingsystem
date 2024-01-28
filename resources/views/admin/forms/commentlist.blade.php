@@ -141,7 +141,7 @@
                                                 <td>{{ $key + 1 }}</td>
 
                                                 <td>{{ $items->comment }}</td>
-                                                <td>{{ Auth::user()->name }}</td>
+                                                <td>{{ $items->userNames->name }}</td>
 
                                             </tr>
                                         @endforeach

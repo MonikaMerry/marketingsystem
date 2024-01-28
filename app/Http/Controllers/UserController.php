@@ -10,7 +10,7 @@ class UserController extends Controller
     public function userListPage()
     {
         $user_list = User::where('id', '!=', 1)->get();
-        return view('admin.forms.userlist', compact('user_list'));
+        return view('admin.forms.user.userlist', compact('user_list'));
     }
 
     public function activeUser($id)
@@ -44,5 +44,12 @@ class UserController extends Controller
         $mark_as_admin->is_admin = 0;
         $mark_as_admin->save();
         return back()->with('info', 'Make as User Successfully');
+    }
+    // delete user
+
+    public function deleteUser($id){
+        $delete_user = User::find($id);
+        $delete_user->delete();
+        return back()->with('danger','User Deleted Successfully');        
     }
 }

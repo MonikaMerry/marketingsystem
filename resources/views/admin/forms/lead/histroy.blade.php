@@ -97,10 +97,10 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Phone Number</th>
                                         <th scope="col">District</th>
+                                        <th scope="col">State</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Last Contact Time</th>
-
-
+                                        <th scope="col">Last Contact Person</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -109,21 +109,15 @@
                                             <td scope="row">{{ $key + 1 }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->mobile_number }}</td>
-                                            <td>{{ $item->district }}</td>
+                                            <td>{{ $item->stateData->state }}</td>
+                                            <td>{{ $item->districtData->district }}</td>
                                             <td>{{ $item->status }}</td>
-                                            <td>{{ $item->last_contact_time }}</td>
-                                            {{-- <td>
-                                                <a href="{{ url('comment-page') }}/{{ $item->id }}"
-                                                    class="btn btn-primary">
-                                                    <i class="bi bi-chat-dots-fill"></i>
-                                                </a>
-                                                <a href="{{ url('edit-lead') }}/{{ $item->id }}"
-                                                    class="btn btn-warning">Edit
-                                                </a>
-                                                <a href="{{ url('delete-lead') }}/{{ $item->id }}"
-                                                    class="btn btn-danger">Delete
-                                                </a>
-                                            </td> --}}
+                                            <td>{{ Carbon\Carbon::parse($item->last_contact_time)->diffForHumans() }}
+                                            </td>
+                                             @foreach ($user as $user_datas)
+                                            <td>{{ $user_datas->userNames->name}}</td>
+                                            @endforeach
+
                                         </tr>
                                     @endforeach
                                 </tbody>

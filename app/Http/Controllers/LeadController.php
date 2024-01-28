@@ -21,7 +21,8 @@ class LeadController extends Controller
 
     public function leadLists()
     {
-        $list_data = Lead::where('status', '!=', 'activated')->get();
+        $list_data = Lead::with('stateData', 'districtData')->where('status', '!=', 'activated')->get();
+        //   return $list_data;
         return view('admin.forms.lead.leadlist', compact('list_data'));
     }
 
@@ -86,13 +87,19 @@ class LeadController extends Controller
         $validatedData = $request->validate([
             'name' => ['required', 'max:100'],
             'phone_number' => ['required', 'digits:10'],
-            'district' => ['required', 'max:15'],
+            'state_id' => ['required', 'max:15'],
+            'district_id' => ['required', 'max:15'],
+            'language' => ['required',],
         ]);
 
         $update_lead = Lead::find($request->id);
         $update_lead->name = $request->name;
         $update_lead->mobile_number = $request->phone_number;
-        $update_lead->district = $request->district;
+        $update_lead->state_id = $request->state_id;
+        $update_lead->district_id = $request->district_id;
+        $update_lead->language = $request->language;
+
+        // return $update_lead;
         $update_lead->save();
 
         return redirect('lead-list')->with('info', 'Lead Updated Successfully');
@@ -112,8 +119,14 @@ class LeadController extends Controller
 
     public function histroyPage()
     {
-        $histroy_data = Lead::where('status', 'activated')->get();
-        return view('admin.forms.lead.histroy', compact('histroy_data'));
+        $histroy_data = Lead::with('comments', 'stateData', 'districtData','comment','user')->where('status', 'activated')->get();
+        $user = LeadComment::with('userNames')->get();
+        // return $user;
+        // Lead::where('id', $lead_id)->update(['last_contact_time' => now()->toDateTimeString()]);
+
+        // $histroy_datas = LeadComment::with('userNames')->latest()->get();
+        //    return $user;
+        return view('admin.forms.lead.histroy', compact('histroy_data','user'));
     }
 
     // import view page

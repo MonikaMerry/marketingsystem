@@ -14,8 +14,8 @@ class LeadComment extends Model
         return $this->belongsTo(Lead::class);
     }
 
-    public function user()
+    public function userNames()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

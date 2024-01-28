@@ -106,8 +106,8 @@
                                             <th scope="col">District</th>
                                             <th scope="col">Language</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Last Contact Time</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col-md-6">Last Contact Time</th>
+                                            <th scope="col-6">Action</th>
 
 
                                         </tr>
@@ -118,8 +118,8 @@
                                                 <td scope="row">{{ $key + 1 }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->mobile_number }}</td>
-                                                <td>{{ $item->state_id }}</td>
-                                                <td>{{ $item->district_id }}</td>
+                                                <td>{{ $item->stateData->state }}</td>
+                                                <td>{{ $item->districtData->district }}</td>
                                                 <td>{{ $item->language }}</td>
                                                 <td>{{ $item->status }}</td>
                                                 <td>{{ Carbon\Carbon::parse($item->last_contact_time)->diffForHumans() }}
@@ -133,7 +133,7 @@
                                                         class="btn btn-warning mb-1">Edit
                                                     </a>
                                                     <a href="{{ url('delete-lead') }}/{{ $item->id }}"
-                                                        class="btn btn-danger mb-1">Delete
+                                                        class="btn btn-danger mb-1">Del
                                                     </a>
                                                 </td>
                                             </tr>

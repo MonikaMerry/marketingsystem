@@ -93,6 +93,7 @@
                                         <tr>
                                             <th scope="col">S.No</th>
                                             <th scope="col">District</th>
+                                            <th scope="col">State</th>
                                             <th scope="col">Action</th>
 
 
@@ -103,6 +104,7 @@
                                             <tr>
                                                 <td scope="row">{{ $key + 1 }}</td>
                                                 <td>{{ $district->district }}</td>
+                                                <td>{{ $district->states->state }}</td>
                                                 <td>
                                                     <div class=" d-grid gap-2 d-md-flex">
                                                         <a href="{{ url('district') }}/{{ $district->id }}"

@@ -13,7 +13,7 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        $districts = District::get();
+        $districts = District::with('states')->get();
         return view('admin.forms.district.district',compact('districts'));
     }
 
@@ -87,6 +87,8 @@ class DistrictController extends Controller
      */
     public function destroy(District $district)
     {
-        //
+        $delete_district = District::find($district->id);
+        $delete_district->delete();
+        return redirect('district')->with('danger', 'District Deleted Successfully');
     }
 }

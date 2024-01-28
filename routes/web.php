@@ -68,6 +68,8 @@ Route::middleware('auth', 'admin')->group(function () {
 
     // user page
     Route::get('user-list', [UserController::class, 'userListPage']);
+    Route::get('delete-user/{id}',[UserController::class,'deleteUser']);
+
 
     // active && inactive user
 
